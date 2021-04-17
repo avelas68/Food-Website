@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        h1.display-2{
+            font-family:"Lucida Console", Monaco, monospace;
+            font-size: .25in;
+            color: black;
+            text-align: center;
+        }
+        div.a{
+           text-align: center;
+        }
+        h2.c{
+            font-family:"Lucida Console", Monaco, monospace;
+            color: black
+        }
+        body.d{
+            background-color: rgb(255, 191, 71);
+        }
+        h2.e{
+            text-align: left;
+        }
+        p.r{
+            text-align: right;
+        }
+        p.t{
+            text-align: left;
+        }
+        p.e{
+            text-align: left;
+            font-size: .25in;
+        }
+        p.y{
+            text-align: right;
+        }
+        
+       div.m
+        {border-style: solid;
+       }
+       p.k{
+           text-align: right;
+
+       }
+    </style>
+    <head >
+        <title>Restaurant Menu Items</title>
+
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    </head>
+
+    <body class="d" >
+        <div class="a" id="menuItems" v-cloak>
+            <div class="jumbo tronjumbotron-fluid">
+
+                <!-- Application Title and tagline-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg">
+                            <h1 class="display-2" >{{appName}}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-cloak class="container">
+                <div class="row">
+                    <div class="col-lg">
+                        <h2 class="c">Search for a Restaurant Menu Item:</h2>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-md-8 row" v-if="searchHistory" v-for="search in searchHistory">
+                        <h3 style="float:left">{{search.title}}</h3>
+                        <button class="btn btn-dark" style="float:right" @click="searchHistoryFunc(search.id)">Info</button>
+                    </div>
+                    <input
+                        type="text"
+                        v-model="searchItem"
+                        class="form-control"
+                        placeholder="Search for menu items"
+                        @keyup.enter="searchMenuItems"
+                    />
+                </div>
+            </div>
+            <div class="row" >
+             <div class="col-md-8 container" >
+            <div v-for="item in menuItems.menuItems" class="card">
+                <div v-if="item && item.title" class="card-body">
+                    <h2 class="e">{{item.title}}</h2>
+                    <button
+                    class="btn btn-dark"
+                    style="float:right"
+                    @click="fetchMenuItems(item.id)">Get MenuItem Info</button>
+                </div>
+                <img v-if="item.image" v-bind:src="item.image" style="width:100px;height:100px;">
+            </div>
+             </div>
+            </div>
+            <div class="row" >
+                <div class="col-md-3 col-md-6 col-md-3 container">
+                    <div class = m>
+           <div v-if="menuInfo && menuInfo.title" class="container">
+                <h2>{{menuInfo.title}}</h2>
+                <h3>Restaurant Chain {{menuInfo.restaurantChain}}</h3>
+                <h3 v-if="menuInfo.numberOfServings">Number Of Servings {{menuInfo.numberOfServings}}</h3>
+                <img v-if="infoImage" class="col-md-6" v-bind:src="infoImage" style="width:100px;height:100px;"   >   
+               
+                <h2><b>Nutrition Facts</b></h2>
+                <hr style="height:15px;border:none;color:#333;background-color:#333;">
+                <p class="e"><b>Calories {{menuInfo.nutrition.calories}}</b></p>
+                <hr>
+                <p class = "r"><b>% of Daily Value</b></p>
+                <hr>
+                <p class="t"><b>Total Fat </b>{{menuInfo.nutrition.fat}} <span style="float:right;">{{menuInfo.nutrition.caloricBreakdown.percentFat}}%</span></p>
+                <hr>
+                <p class="t"><b>Total Carbohydrate </b>{{menuInfo.nutrition.carbs}} <span style="float:right;">{{menuInfo.nutrition.caloricBreakdown.percentCarbs}}%</span></p>
+                <hr>
+                <p class="t"><b>Protein </b>{{menuInfo.nutrition.protein}}<span style="float:right;">{{menuInfo.nutrition.caloricBreakdown.percentProtein}}%</span></p>
+                <hr style="height:10px;border:none;color:#333;background-color:#333;">
+                <p class="t"><b>Nutrients:</b></p>
+                <hr>
+               <div v-for="nutrient in infoNutrients">
+                    <p class = "t" >{{nutrient.title}}  {{nutrient.amount}}{{nutrient.unit}}<span style="float:right;">{{nutrient.percentOfDailyNeeds}}%</span></p>
+                    <hr>
+                </div>
+                <p>The % Daily Value (DV) tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice.</p>
+                </div>
+           </div>
+                  </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="app.js" type="text/javascript"></script>
+
+    </body>
+</html>
