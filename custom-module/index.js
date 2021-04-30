@@ -10,6 +10,7 @@ const search = async menuItem => {
         return error;
     }
 }
+
 const fetch = async menuId=> {
     fetchUrl = `${config.url}${menuId}?apiKey=${config.apikey}`
     try{

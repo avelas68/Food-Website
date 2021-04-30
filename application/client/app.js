@@ -12,6 +12,7 @@ const menuItems = new Vue({
         searchHistory: [],
     },
 
+    
     methods: {
         searchHistoryFunc: async function(id){
             const response = await axios.post("http://localhost:8888/api/fetch", {
