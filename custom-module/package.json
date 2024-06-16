@@ -1,10 +1,17 @@
 {
   "name": "custom-module",
+  "homepage": "https://avelas68.github.io/Food-Website/"
   "version": "1.0.0",
   "description": "Search for restaurant menu items",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+      "predeploy": "npm run build",
+      "deploy": "gh-pages -d build",
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject"
   },
   "author": "Adriana Velasco",
   "license": "ISC",
