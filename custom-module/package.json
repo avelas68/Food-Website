@@ -1,6 +1,6 @@
 {
   "name": "custom-module",
-  "homepage": "https://avelas68.github.io/Food-Website/"
+  "homepage": "https://avelas68.github.io/Food-Website/",
   "version": "1.0.0",
   "description": "Search for restaurant menu items",
   "main": "index.js",
