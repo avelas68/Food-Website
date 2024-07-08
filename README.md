@@ -6,3 +6,5 @@ Uses Spoonacular API to locate food items. The user types in a specific food the
 
 https://user-images.githubusercontent.com/47703183/236349222-45e1034a-a780-490f-a9f1-00f58fa91f3c.mp4
 
+![Screen Shot 2024-02-29 at 3 21 01 PM](https://github.com/avelas68/Food-Website/assets/47703183/c4701261-9712-4c96-9bde-1f3cd30d86ac)
+![Screen Shot 2024-02-29 at 3 21 38 PM](https://github.com/avelas68/Food-Website/assets/47703183/913c19ff-ee31-4e14-aac5-6b081a91c9ce)
